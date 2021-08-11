@@ -1,5 +1,7 @@
 kind: pipeline
 name: production
+type: docker
+
 when:
   event: [ push ]
   branch: [ main ]
@@ -8,4 +10,8 @@ steps:
   - name: build
     image: rust
     commands:
-      - cargo build
+      - cargo build --verbose
+  - name: test
+    image: rust
+    commands:
+      - cargo test --verbose
