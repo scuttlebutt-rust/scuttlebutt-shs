@@ -1,0 +1,11 @@
+kind: pipeline
+name: production
+when:
+  event: [ push ]
+  branch: [ main ]
+
+steps:
+  - name: build
+    image: rust
+    commands:
+      - cargo build
